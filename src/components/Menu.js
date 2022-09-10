@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 // import { useEffect } from 'react';
 
-
-
 import '../static/stylesheet/menu.css';
 
 const inBounds = (e) => {
@@ -64,10 +62,6 @@ const Menu = ({ history, show, onClose }) => {
 		hh.style.textDecoration = 'overline'
 	}
 
-	// const capitalize = (str) => {
-	// 	const lower = str.toLowerCase()
-	// 	return str.charAt(0).toUpperCase() + lower.slice(1)
-	// }
 	
 
 	return (
