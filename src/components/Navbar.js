@@ -3,7 +3,6 @@ import Logo from './PageLogo.js';
 import { MenuRounded, Info } from '@material-ui/icons';
 
 
-
 class Navbar extends Component {
 
 	render() {
