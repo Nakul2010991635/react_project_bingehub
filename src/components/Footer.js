@@ -9,7 +9,7 @@ const Footer = ({ time }) => {
 			<div className='date'>{time && time.slice(0, 15)}</div>
 			<div className='time'>{time && time.slice(16)}</div>
 			<div className='info'>
-				React Project <span>&copy;</span> of Entertainment Enthusiasts
+				React Project <span>&copy;</span> of Data Pirates
 			</div>
 		</footer>
 	)
