@@ -44,7 +44,7 @@ class ShowSingleQuery extends Component {
 					/>
 				}
 				{this.props.mediaType === 'person' && <PersonCard details={this.props.details} />}
-				<button className='btn btn-default' onClick={this.props.onBtnClick} >
+				<button className='btn btn-primary' onClick={this.props.onBtnClick} style={{margin: '20px auto', display: 'block'}} >
 					Go Back
 				</button>
 			</div>
