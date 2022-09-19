@@ -7,6 +7,7 @@ import './App.css';
 import Header from './components/Header.js';
 import Main from './components/Main.js';
 import Menu from './components/Menu.js';
+import About from './components/About.js';
 import Footer from './components/Footer.js';
 import ShowSingleQuery from './components/SSQue.js';
 
@@ -24,6 +25,7 @@ const App = () => {
     })
     const [open, setOpen] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
+    const [aboutOpen, setAboutOpen] = useState(false)
     const [showMain, setShowMain] = useState(true)
     const [singleQueryObject, setSQO] = useState({
         _data: null,
@@ -69,7 +71,7 @@ const App = () => {
         setDataList(data.results)
 
         setTimeout(() => {
-            window.scroll({ top: 130, left: 0, behavior: 'smooth' })
+            window.scroll({ top: 320, left: 0, behavior: 'smooth' })
         }, 100)
         const status = await queryResult.status
         if ((status) === 200) {
@@ -222,19 +224,14 @@ const App = () => {
         setCC({ credit_info: null, person_info: null })
         setClips(null)
         setTimeout(() => {
-            window.scroll({ top: 130, left: 0, behavior: 'smooth' })
+            window.scroll({ top: 320, left: 0, behavior: 'smooth' })
         }, 100)
     }
 
     const handleMenuClick = () => {
-        console.log('menu called')
-        
-        // var body = document.querySelector('body')
-        // var root = document.querySelector('#root-container')
-        var head = document.querySelector('#header')
-        var main = document.querySelector('#main')
+        let head = document.querySelector('#header')
+        let main = document.querySelector('#main')
         if (!menuOpen) {
-            // body.style.backgroundColor = root.style.backgroundColor = '#000000'
             if (head) {
                 head.style.opacity = '0.6'
                 head.style.pointerEvents = 'none'
@@ -243,8 +240,7 @@ const App = () => {
                 main.style.opacity = '0.6'
                 main.style.pointerEvents = 'none'
             }
-        } else if (menuOpen) {
-            // body.style.backgroundColor = root.style.backgroundColor = '#0a0c18'
+        } else {
             if (head) {
                 head.style.opacity = '1'
                 head.style.pointerEvents = 'auto'
@@ -256,6 +252,32 @@ const App = () => {
                 
         }
         setMenuOpen(!menuOpen)
+    }
+
+    const handleAboutClose = () => {
+        let head = document.querySelector('#header')
+        let main = document.querySelector('#main')
+        if (!aboutOpen) {
+            if (head) {
+                head.style.opacity = '0.6'
+                head.style.pointerEvents = 'none'
+            }
+            if (main) {
+                main.style.opacity = '0.6'
+                main.style.pointerEvents = 'none'
+            }
+        } else {
+            // body.style.backgroundColor = root.style.backgroundColor = '#0a0c18'
+            if (head) {
+                head.style.opacity = '1'
+                head.style.pointerEvents = 'auto'
+            }
+            if (main) {
+                main.style.opacity = '1'
+                main.style.pointerEvents = 'auto'
+            }
+        }
+        setAboutOpen(!aboutOpen)
     }
 
     // const appendToHistory = (id, type) => {
@@ -270,12 +292,21 @@ const App = () => {
 
     return (
         <div id="root-container">
-            <Menu history={history}
-                show={menuOpen}
-                onClose={handleMenuClick} />
+            <Menu 
+                history={history}
+                show={menuOpen && !aboutOpen}
+                onClose={handleMenuClick} 
+            />
+            <About 
+                show={aboutOpen && !menuOpen} 
+                onClose={handleAboutClose} 
+            />
             <Header 
+                time={time}
                 onSubmit={onFormSubmission} 
-                onMenuClick={handleMenuClick}/>
+                onMenuClick={handleMenuClick}
+                onAboutClick={handleAboutClose}
+            />
             {showMain && <Main 
                 dataList={dataList} 
                 pageT={pages} 

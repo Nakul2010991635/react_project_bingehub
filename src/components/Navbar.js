@@ -9,14 +9,18 @@ class Navbar extends Component {
 		return (
 			<div className='nav-logo'>
 				<div className='nav-link'
-					onClick={this.props.onMenuClick}>
+					onClick={this.props.onMenuClick}
+				>
 					<div className='nav-link-icon'>
 						<MenuRounded size='large' style={{ filter: 'url(#shadow)' }} />
 					</div>
-					<span className='nav-link-text'>MENU</span>
+					<span className='nav-link-text'>History</span>
 				</div>
 				<Logo />
-				<div className='nav-link'>
+				<div 
+					className='nav-link'
+					onClick={this.props.onAboutClick}
+				>
 					<div className='nav-link-icon'>
 						<Info size='large' />
 					</div>
